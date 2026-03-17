@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "aa5c9043-4442-4868-8d05-f1c1e65ec1e9",
+    "studentName": "Mahi Verma",
+    "rollNumber": "05",
+    "className": "10th",
+    "section": "c",
+    "fatherName": "Sameer Verma",
+    "examName": "Annul exam 2026",
+    "examCenter": "Giridih",
+    "examDate": "2026-03-18",
+    "subjects": "Math",
+    "photo": "",
+    "createdAt": "2026-03-16T11:20:05.324325"
+  }
+]

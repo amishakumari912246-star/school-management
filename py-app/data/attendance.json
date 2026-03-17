@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "b5f0ef18-b0c8-4d92-9103-3613d781aa09",
+    "studentName": "Rina kumari",
+    "rollNumber": "81885dd9",
+    "className": "10th",
+    "section": "c",
+    "date": "2026-03-16",
+    "status": "Present",
+    "createdAt": "2026-03-16T17:41:16.534326"
+  },
+  {
+    "_id": "ee73ddc7-bcc4-43ae-80d0-d0c4d9bd316c",
+    "studentName": "Sila Das",
+    "rollNumber": "ea6456ec",
+    "className": "8th",
+    "section": "B",
+    "date": "2026-03-16",
+    "status": "Present",
+    "createdAt": "2026-03-16T18:36:41.879357"
+  }
+]

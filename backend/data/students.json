@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "feb1eb3c-3ef4-4558-973e-6df921392fb9",
+    "firstName": "Puja ",
+    "lastName": "kumari",
+    "gender": "Female",
+    "dob": "2026-03-14",
+    "className": "10th",
+    "section": "B",
+    "fatherName": "Gopal kumar",
+    "motherName": "Kajal kumari",
+    "mobile": "9967453267",
+    "email": "Pujakumari@gmail.com",
+    "city": "Giridih",
+    "state": "Jharkhand",
+    "admissionDate": "2026-03-14",
+    "createdAt": "2026-03-15T18:30:23.204Z"
+  }
+]

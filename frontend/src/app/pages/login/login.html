@@ -1,0 +1,17 @@
+<section class="page-card login-card">
+	<h2>User Login</h2>
+	<form [formGroup]="form" (ngSubmit)="login()" class="grid">
+		<input placeholder="Email" formControlName="email" />
+		<input type="password" placeholder="Password" formControlName="password" />
+		<select formControlName="role">
+			<option value="">Select Role</option>
+			<option value="Admin">Admin</option>
+			<option value="Teacher">Teacher</option>
+			<option value="Student">Student</option>
+			<option value="Accountant">Accountant</option>
+		</select>
+		<button type="submit">Login</button>
+	</form>
+	<p class="success" *ngIf="submitted">Login successful.</p>
+	<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</section>

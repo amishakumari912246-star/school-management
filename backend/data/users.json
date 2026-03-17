@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "c168f679-f744-44aa-a8cb-e4e06c25293e",
+    "name": "System Admin",
+    "email": "admin@school.com",
+    "passwordHash": "$2b$10$RvtnqbgPWxnmuYS9lspFH.9lSFDIPh6v7tGZkfOOtOHh7X0iysYB6",
+    "role": "Admin",
+    "createdAt": "2026-03-15T18:18:05.470Z"
+  }
+]

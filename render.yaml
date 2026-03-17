@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: school-management-py-app
+    runtime: python
+    rootDir: py-app
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -b 0.0.0.0:$PORT server:app
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FLASK_DEBUG
+        value: "0"

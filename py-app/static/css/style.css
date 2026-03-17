@@ -1,0 +1,358 @@
+/* ── Reset & Base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f2f5; color: #333; font-size: 14px; }
+
+/* ── Login ─────────────────────────────────────────────────────── */
+#login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a2e4a 0%, #2563a8 100%);
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.login-logo { font-size: 3rem; margin-bottom: 0.5rem; }
+.login-card h1 { font-size: 1.6rem; color: #1a2e4a; margin-bottom: 0.3rem; }
+.login-card .subtitle { color: #888; margin-bottom: 1.5rem; font-size: 0.9rem; }
+.login-card .login-hint { color: #aaa; font-size: 0.78rem; margin-top: 1rem; }
+
+.login-card form { display: flex; flex-direction: column; gap: 0.85rem; }
+
+.login-card input,
+.login-card select {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.login-card input:focus, .login-card select:focus { border-color: #2563a8; }
+
+.login-card button[type="submit"] {
+  padding: 0.8rem;
+  background: #1a2e4a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.3rem;
+}
+.login-card button[type="submit"]:hover { background: #2563a8; }
+
+/* ── App Shell ──────────────────────────────────────────────────── */
+#app-shell { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: #1a2e4a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.logo {
+  padding: 1.4rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.3px;
+}
+
+#sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 0;
+  flex: 1;
+}
+
+#sidebar-nav a {
+  display: block;
+  padding: 0.65rem 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.88rem;
+  border-radius: 0 24px 24px 0;
+  margin-right: 0.8rem;
+  transition: all 0.15s;
+}
+#sidebar-nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+#sidebar-nav a.active { background: rgba(255,255,255,0.18); color: #fff; font-weight: 600; }
+
+/* Main Area */
+.main-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+.topbar {
+  background: #fff;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.topbar h2 { font-size: 1.1rem; color: #1a2e4a; font-weight: 600; }
+.topbar-right { display: flex; align-items: center; gap: 0.8rem; }
+
+.role-chip {
+  background: #e8f0fe;
+  color: #1a2e4a;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.btn-logout {
+  padding: 0.35rem 0.9rem;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.btn-logout:hover { background: #c82333; }
+
+#page-content { padding: 1.4rem; flex: 1; overflow-y: auto; }
+
+/* ── Shared Components ─────────────────────────────────────────── */
+.page-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  margin-bottom: 1.2rem;
+}
+
+.page-card h2 {
+  font-size: 1.1rem;
+  color: #1a2e4a;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #f0f2f5;
+}
+
+/* Grid Form */
+.grid { display: grid; gap: 0.75rem; margin-bottom: 1rem; }
+.grid.two { grid-template-columns: 1fr 1fr; }
+.grid.three { grid-template-columns: 1fr 1fr 1fr; }
+.span-full { grid-column: 1 / -1; }
+
+.grid input,
+.grid select {
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 7px;
+  font-size: 0.88rem;
+  outline: none;
+  width: 100%;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+.grid input:focus, .grid select:focus { border-color: #2563a8; }
+
+/* Buttons */
+.actions { display: flex; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
+
+button {
+  padding: 0.55rem 1.2rem;
+  background: #1a2e4a;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.86rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+button:hover { background: #2563a8; }
+button.btn-secondary { background: #6c757d; }
+button.btn-secondary:hover { background: #545b62; }
+button.btn-sm { padding: 0.3rem 0.65rem; font-size: 0.78rem; border-radius: 5px; }
+
+/* QR Scanner */
+.qr-scanner-box {
+  background: #f8f9ff;
+  border: 2px dashed #3f51b5;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 10px;
+}
+.qr-scanner-box h3 { color: #3f51b5; margin-bottom: 6px; }
+.btn-scan {
+  padding: 10px 20px;
+  background: #3f51b5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-scan:hover { background: #303f9f; }
+.btn-scan-stop { background: #e53935; }
+.btn-scan-stop:hover { background: #b71c1c; }
+
+/* Attendance Status Badges */
+.badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.78rem; font-weight:600; }
+.badge-present { background:#e8f5e9; color:#2e7d32; }
+.badge-absent  { background:#ffebee; color:#c62828; }
+.badge-late    { background:#fff3e0; color:#e65100; }
+.badge-holiday { background:#e3f2fd; color:#1565c0; }
+
+/* Data table improved */
+.data-table { width:100%; border-collapse:collapse; margin-top:1.2rem; }
+.data-table th { background:#f4f6f8; padding:0.6rem 0.8rem; text-align:left; font-weight:600; color:#555; border-bottom:2px solid #e0e0e0; font-size:0.83rem; }
+.data-table td { padding:0.55rem 0.8rem; border-bottom:1px solid #f0f0f0; color:#444; font-size:0.85rem; }
+.data-table tr:hover td { background:#fafbfc; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; margin-top: 1.2rem; }
+th {
+  background: #f4f6f8;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #e0e0e0;
+  font-size: 0.83rem;
+}
+td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+  font-size: 0.85rem;
+}
+tr:hover td { background: #fafbfc; }
+
+/* Error / messages */
+.error { color: #dc3545; font-size: 0.83rem; margin-top: 0.3rem; }
+.no-data { color: #999; text-align: center; padding: 2.5rem 1rem; font-size: 0.9rem; }
+
+/* ── Dashboard Stats ────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.4rem 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  border-left: 4px solid;
+  text-align: center;
+}
+.stat-card.blue   { border-color: #2563a8; }
+.stat-card.green  { border-color: #16a34a; }
+.stat-card.orange { border-color: #ea580c; }
+.stat-card.purple { border-color: #7c3aed; }
+.stat-card.teal   { border-color: #0891b2; }
+
+.stat-num   { font-size: 2rem; font-weight: 700; color: #1a2e4a; line-height: 1; }
+.stat-label { font-size: 0.78rem; color: #888; margin-top: 0.4rem; }
+
+/* ── Admit Card Print ───────────────────────────────────────────── */
+.print-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.admit-card-doc {
+  background: #fff;
+  width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 2px solid #333;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  color: #000;
+}
+
+.ac-header {
+  text-align: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.ac-header h2 { font-size: 1.7rem; letter-spacing: 3px; text-transform: uppercase; }
+.ac-header p  { font-size: 0.95rem; color: #444; margin-top: 0.3rem; }
+
+.ac-body  { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
+.ac-info  { flex: 1; }
+.ac-info table  { width: 100%; border-collapse: collapse; }
+.ac-info td     { padding: 0.4rem 0.5rem; border-bottom: 1px solid #ddd; font-size: 0.88rem; }
+.ac-info td:first-child { font-weight: bold; width: 42%; color: #555; }
+
+.ac-photo {
+  width: 105px;
+  height: 125px;
+  border: 1px solid #999;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  font-size: 0.72rem;
+  color: #aaa;
+  text-align: center;
+}
+.ac-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.ac-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ccc;
+  padding-top: 1.5rem;
+}
+.ac-footer .sig { text-align: center; }
+.ac-footer .sig p { font-size: 0.82rem; margin: 0.1rem 0; }
+
+.no-print-actions {
+  text-align: center;
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+@media print {
+  .no-print-actions { display: none; }
+  body > *:not(.print-overlay) { display: none !important; }
+  .print-overlay { position: absolute; background: #fff; padding: 0; }
+  .admit-card-doc { border: none; max-height: none; }
+}

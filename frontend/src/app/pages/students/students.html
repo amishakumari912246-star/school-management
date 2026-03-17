@@ -1,0 +1,57 @@
+<section class="page-card">
+	<h2>Student Registration</h2>
+
+	<form class="grid two" [formGroup]="form" (ngSubmit)="save()">
+		<input placeholder="First Name" formControlName="firstName" />
+		<input placeholder="Last Name" formControlName="lastName" />
+
+		<select formControlName="gender">
+			<option value="">Select Gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+			<option value="Other">Other</option>
+		</select>
+		<input type="date" formControlName="dob" />
+
+		<input placeholder="Class" formControlName="className" />
+		<input placeholder="Section" formControlName="section" />
+		<input placeholder="Father Name" formControlName="fatherName" />
+		<input placeholder="Mother Name" formControlName="motherName" />
+		<input placeholder="Mobile Number" formControlName="mobile" />
+		<input placeholder="Email" formControlName="email" />
+		<input placeholder="City" formControlName="city" />
+		<input placeholder="State" formControlName="state" />
+		<input type="date" formControlName="admissionDate" />
+	</form>
+
+	<div class="actions">
+		<button (click)="save()" type="button">{{ editingId ? 'Update' : 'Save' }}</button>
+		<button class="secondary" (click)="reset()" type="button">Reset</button>
+	</div>
+
+	<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+	<table *ngIf="students.length > 0">
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>Name</th>
+				<th>Class</th>
+				<th>Mobile</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let student of students">
+				<td>{{ student._id }}</td>
+				<td>{{ student.firstName }} {{ student.lastName }}</td>
+				<td>{{ student.className }} - {{ student.section }}</td>
+				<td>{{ student.mobile }}</td>
+				<td>
+					<button (click)="edit(student)" type="button">Edit</button>
+					<button class="secondary" (click)="remove(student._id || '')" type="button">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>

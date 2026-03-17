@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Management System</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    /* Prevent flash before JS runs */
+    #login-screen, #app-shell { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- ══ LOGIN SCREEN ══════════════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">🏫</div>
+    <h1>School Management</h1>
+    <p class="subtitle">Sign in to your account</p>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email address" required />
+      <input type="password" id="login-password" placeholder="Password" required />
+      <select id="login-role">
+        <option value="Admin">Admin</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Student">Student</option>
+        <option value="Accountant">Accountant</option>
+      </select>
+      <button type="submit">Login</button>
+      <p id="login-error" class="error" style="display:none"></p>
+    </form>
+    <p class="login-hint">Default: admin@school.com &nbsp;/&nbsp; Admin@123</p>
+  </div>
+</div>
+
+<!-- ══ APP SHELL ═════════════════════════════════════════════════════ -->
+<div id="app-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">🏫 School MS</div>
+    <nav id="sidebar-nav">
+      <a href="#" data-page="dashboard">📊 Dashboard</a>
+      <a href="#" data-page="students">🎓 Students</a>
+      <a href="#" data-page="teachers">👨‍🏫 Teachers</a>
+      <a href="#" data-page="classes">🏫 Classes</a>
+      <a href="#" data-page="attendance">✅ Attendance</a>
+      <a href="#" data-page="fees">💰 Fees</a>
+      <a href="#" data-page="exams">📝 Exams</a>
+      <a href="#" data-page="results">📈 Results</a>
+      <a href="#" data-page="admitcard">🪪 Admit Card</a>
+      <a href="#" data-page="library">📚 Library</a>
+      <a href="#" data-page="transport">🚌 Transport</a>
+      <a href="#" data-page="notices">📢 Notices</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <div class="main-area">
+    <header class="topbar">
+      <h2 id="page-title">Dashboard</h2>
+      <div class="topbar-right">
+        <span id="user-chip" class="role-chip"></span>
+        <button id="logout-btn" class="btn-logout">Logout</button>
+      </div>
+    </header>
+    <main id="page-content"></main>
+  </div>
+</div>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

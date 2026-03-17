@@ -1,0 +1,21 @@
+<div class="layout">
+  <aside class="sidebar">
+    <h1>School ERP</h1>
+    <p>Management Console</p>
+    <nav>
+      @for (item of menu; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+      }
+    </nav>
+    @if (authService.getCurrentUser(); as user) {
+      <p class="role-chip">{{ user.role }}: {{ user.name }}</p>
+      <button class="login-link" (click)="logout()">Logout</button>
+    } @else {
+      <a class="login-link" [routerLink]="'/login'">Role Login</a>
+    }
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

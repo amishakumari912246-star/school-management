@@ -1,0 +1,126 @@
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Print overlay */
+.print-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.admit-card-preview {
+  background: #fff;
+  color: #000;
+  width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 2px solid #333;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.card-header {
+  text-align: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0.3rem 0 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+  }
+}
+
+.card-body {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+
+    &:first-child {
+      width: 40%;
+      color: #555;
+    }
+  }
+}
+
+.card-photo {
+  width: 100px;
+  height: 120px;
+  border: 1px solid #999;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ccc;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+.signature-box {
+  text-align: center;
+
+  p {
+    margin: 0.2rem 0;
+    font-size: 0.85rem;
+    color: #333;
+  }
+}
+
+.no-print {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  .print-overlay {
+    position: absolute;
+    background: #fff;
+  }
+
+  .admit-card-preview {
+    border: none;
+    width: 100%;
+  }
+}

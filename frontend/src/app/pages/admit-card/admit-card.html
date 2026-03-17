@@ -1,0 +1,111 @@
+<section class="page-card">
+  <h2>Admit Card Management</h2>
+
+  <form class="grid two" [formGroup]="form" (ngSubmit)="save()">
+    <input placeholder="Student Name" formControlName="studentName" />
+    <input placeholder="Roll Number" formControlName="rollNumber" />
+    <input placeholder="Class" formControlName="className" />
+    <input placeholder="Section" formControlName="section" />
+    <input placeholder="Father's Name" formControlName="fatherName" />
+    <input placeholder="Exam Name (e.g. Annual Exam 2026)" formControlName="examName" />
+    <input placeholder="Exam Center / Venue" formControlName="examCenter" />
+    <input type="date" formControlName="examDate" />
+    <input placeholder="Subjects (e.g. Math, Science, English)" formControlName="subjects" class="full-width" />
+    <input placeholder="Photo URL (optional)" formControlName="photo" class="full-width" />
+  </form>
+
+  <div class="actions">
+    <button (click)="save()" type="button">{{ editingId ? 'Update' : 'Generate Admit Card' }}</button>
+    <button class="secondary" (click)="reset()" type="button">Reset</button>
+  </div>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <!-- Records Table -->
+  <table *ngIf="admitCards.length > 0">
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Roll No</th>
+        <th>Class</th>
+        <th>Exam Name</th>
+        <th>Exam Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of admitCards">
+        <td>{{ card.studentName }}</td>
+        <td>{{ card.rollNumber }}</td>
+        <td>{{ card.className }} - {{ card.section }}</td>
+        <td>{{ card.examName }}</td>
+        <td>{{ card.examDate }}</td>
+        <td>
+          <button (click)="showPrint(card)" type="button">Print</button>
+          <button (click)="edit(card)" type="button">Edit</button>
+          <button class="secondary" (click)="remove(card._id || '')" type="button">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Print Preview -->
+<div class="print-overlay" *ngIf="printCard">
+  <div class="admit-card-preview">
+    <div class="card-header">
+      <h2>Admit Card</h2>
+      <p>{{ printCard.examName }}</p>
+    </div>
+    <div class="card-body">
+      <div class="card-info">
+        <table class="info-table">
+          <tr>
+            <td><strong>Student Name:</strong></td>
+            <td>{{ printCard.studentName }}</td>
+          </tr>
+          <tr>
+            <td><strong>Father's Name:</strong></td>
+            <td>{{ printCard.fatherName }}</td>
+          </tr>
+          <tr>
+            <td><strong>Roll Number:</strong></td>
+            <td>{{ printCard.rollNumber }}</td>
+          </tr>
+          <tr>
+            <td><strong>Class:</strong></td>
+            <td>{{ printCard.className }} - {{ printCard.section }}</td>
+          </tr>
+          <tr>
+            <td><strong>Exam Date:</strong></td>
+            <td>{{ printCard.examDate }}</td>
+          </tr>
+          <tr>
+            <td><strong>Exam Center:</strong></td>
+            <td>{{ printCard.examCenter }}</td>
+          </tr>
+          <tr>
+            <td><strong>Subjects:</strong></td>
+            <td>{{ printCard.subjects }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-photo" *ngIf="printCard.photo">
+        <img [src]="printCard.photo" alt="Student Photo" />
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="signature-box">
+        <p>____________________</p>
+        <p>Principal Signature</p>
+      </div>
+      <div class="signature-box">
+        <p>____________________</p>
+        <p>Student Signature</p>
+      </div>
+    </div>
+    <div class="no-print">
+      <button (click)="closePrint()" type="button" class="secondary">Close</button>
+    </div>
+  </div>
+</div>

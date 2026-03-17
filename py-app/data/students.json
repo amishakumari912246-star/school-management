@@ -1,0 +1,36 @@
+[
+  {
+    "_id": "81885dd9-e3d5-4905-a1e6-d179538a026b",
+    "firstName": "Rina",
+    "lastName": "kumari",
+    "gender": "Female",
+    "dob": "2012-02-16",
+    "className": "10th",
+    "section": "c",
+    "fatherName": "Gopi Kumar",
+    "motherName": "Kunti Kumari",
+    "mobile": "9988776453",
+    "email": "Rina@gmail.com",
+    "city": "Giridih",
+    "state": "Jharkhand",
+    "admissionDate": "2013-06-16",
+    "createdAt": "2026-03-16T10:14:41.189445"
+  },
+  {
+    "_id": "ea6456ec-5917-4e58-92ec-97b3637df4b0",
+    "firstName": "Sila",
+    "lastName": "Das",
+    "gender": "Female",
+    "dob": "2003-03-16",
+    "className": "8th",
+    "section": "B",
+    "fatherName": "Gopi Das",
+    "motherName": "Sita Das",
+    "mobile": "9876543278",
+    "email": "Sila@gmail.com",
+    "city": "Madan Pali",
+    "state": "Karnataka",
+    "admissionDate": "2000-05-16",
+    "createdAt": "2026-03-16T18:07:48.518792"
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "_id": "6961652e-261b-49db-a4bc-262d3b148cd0",
+    "studentName": "Kajal Kumari",
+    "rollNumber": "03",
+    "className": "10th",
+    "subject": "Math",
+    "examName": "Annul exam 2026",
+    "totalMarks": "100",
+    "marksObtained": "75",
+    "percentage": 75.0,
+    "resultStatus": "Pass",
+    "createdAt": "2026-03-16T11:37:34.572957"
+  }
+]
