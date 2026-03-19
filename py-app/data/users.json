@@ -3,7 +3,7 @@
     "_id": "095f0a6c-a382-44a3-8536-b5c0b2fb4d91",
     "name": "System Admin",
     "email": "admin@school.com",
-    "passwordHash": "$2b$12$BNIHJTCKQC.bnV1Jx4ipQOSn4vLSK/xpHJ8S1N604ROqUb8CkNUxq",
+    "passwordHash": "$2b$12$.FSWfEgud0tJIeQIasH60.Sop191TS00fziaSc/L1KmmPuyk9DJiS",
     "role": "Admin",
     "createdAt": "2026-03-16T10:03:19.041666"
   }
