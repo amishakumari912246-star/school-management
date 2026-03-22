@@ -1113,12 +1113,31 @@ Pages.transport = createCrudPage({
   ]
 });
 
-// ── Simple placeholder pages ──────────────────────────────────────
-const simplePages = {
-  notices:   { icon: '📢', title: 'Notices',    desc: 'Manage school announcements and notices.' },
-};
+// ── Notices Management ─────────────────────────────────────────────
+Pages.notices = createCrudPage({
+  title: '📢 Notice Board',
+  apiPath: '/notices',
+  fields: [
+    { name: 'title',       label: 'Notice Title' },
+    { name: 'category',    label: 'Category', type: 'select', options: ['General', 'Examination', 'Holiday', 'Event', 'Sports', 'Admission', 'Fee', 'Meeting', 'Urgent'] },
+    { name: 'priority',    label: 'Priority', type: 'select', options: ['Normal', 'Important', 'Urgent'] },
+    { name: 'targetAudience', label: 'For', type: 'select', options: ['All', 'Students', 'Teachers', 'Parents', 'Staff'] },
+    { name: 'publishDate', label: 'Publish Date', type: 'date' },
+    { name: 'expiryDate',  label: 'Expiry Date', type: 'date' },
+    { name: 'message',     label: 'Notice Message', spanFull: true },
+    { name: 'postedBy',    label: 'Posted By' },
+  ],
+  columns: [
+    { key: 'title',       label: 'Title' },
+    { key: 'category',    label: 'Category' },
+    { key: 'priority',    label: 'Priority' },
+    { key: 'targetAudience', label: 'For' },
+    { key: 'publishDate', label: 'Date' },
+    { key: 'postedBy',    label: 'Posted By' },
+  ]
+});
 
-Object.entries(simplePages).forEach(([name, cfg]) => {
+Object.entries({}).forEach(([name, cfg]) => {
   Pages[name] = {
     render(container) {
       container.innerHTML = `
