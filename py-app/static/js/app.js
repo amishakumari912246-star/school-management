@@ -888,6 +888,153 @@ Pages.admitcard = {
   }
 };
 
+// ── Student ID Card ─────────────────────────────────────────────────
+Pages.idcard = {
+  async render(container) {
+    let students = [];
+
+    container.innerHTML = `
+      <div class="page-card">
+        <h2>🪪 Student ID Card Generator</h2>
+        <p style="color:#666;margin-bottom:15px;">Student select karo aur ID Card generate karo</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:15px;">
+          <select id="student-select" style="min-width:280px;padding:10px;border-radius:8px;border:1.5px solid #ddd;">
+            <option value="">-- Student Select Karo --</option>
+          </select>
+          <button id="btn-generate-id" class="btn-scan">🪪 ID Card Generate Karo</button>
+        </div>
+        <div id="id-card-preview"></div>
+      </div>`;
+
+    async function loadStudents() {
+      const res = await apiFetch('GET', '/students');
+      if (!res?.ok) return;
+      students = await res.json();
+      const selectEl = container.querySelector('#student-select');
+      const options = students.map(s => {
+        const name = `${s.firstName || ''} ${s.lastName || ''}`.trim();
+        const cls = `${s.className || ''}${s.section ? ' - ' + s.section : ''}`;
+        return `<option value="${s._id}">${name} (${cls})</option>`;
+      }).join('');
+      selectEl.innerHTML = '<option value="">-- Student Select Karo --</option>' + options;
+    }
+    await loadStudents();
+
+    function showIdCard(student) {
+      const name = `${student.firstName || ''} ${student.lastName || ''}`.trim();
+      const previewEl = container.querySelector('#id-card-preview');
+      previewEl.innerHTML = `
+        <div class="id-card-wrapper">
+          <div class="id-card-front">
+            <div class="id-header">
+              <div class="id-logo">🏫</div>
+              <div class="id-school-name">
+                <h1>Delhi Public School</h1>
+                <p>Vasant Kunj, Delhi - 110070</p>
+              </div>
+              <div class="id-logo">🏫</div>
+            </div>
+            <div class="id-title">STUDENT IDENTITY CARD</div>
+            <div class="id-body">
+              <div class="id-photo">
+                ${student.photo ? `<img src="${student.photo}" alt="Photo" />` : '<span>Photo</span>'}
+              </div>
+              <div class="id-details">
+                <table>
+                  <tr><td>Name</td><td><strong>${name}</strong></td></tr>
+                  <tr><td>Class</td><td>${student.className || ''} - ${student.section || ''}</td></tr>
+                  <tr><td>Father's Name</td><td>${student.fatherName || ''}</td></tr>
+                  <tr><td>Mother's Name</td><td>${student.motherName || ''}</td></tr>
+                  <tr><td>D.O.B</td><td>${student.dob || ''}</td></tr>
+                  <tr><td>Mobile No.</td><td>${student.mobile || ''}</td></tr>
+                  <tr><td>Address</td><td>${student.city || ''}${student.state ? ', ' + student.state : ''}</td></tr>
+                </table>
+              </div>
+            </div>
+            <div class="id-footer">
+              <div class="id-validity">Valid: 2025-26</div>
+              <div class="id-signature">
+                <div class="sig-line"></div>
+                <p>Principal Sign</p>
+              </div>
+            </div>
+          </div>
+          <div class="id-card-back">
+            <div class="id-back-header">
+              <h2>🏫 Delhi Public School</h2>
+              <p>Vasant Kunj, Delhi</p>
+            </div>
+            <div class="id-back-content">
+              <h4>School Address:</h4>
+              <p>Delhi Public School, Sector B-3,<br>Vasant Kunj, New Delhi - 110070</p>
+              <h4>Contact:</h4>
+              <p>Phone: 011-26123456<br>Email: info@dpsvasantkunj.com</p>
+              <h4>Instructions:</h4>
+              <ul>
+                <li>This card is non-transferable.</li>
+                <li>If found, please return to school.</li>
+                <li>Must be carried daily to school.</li>
+                <li>Report loss immediately to office.</li>
+              </ul>
+            </div>
+            <div class="id-back-footer">
+              <div class="id-qr" id="id-qr-code"></div>
+              <p class="id-number">ID: ${student._id?.slice(0,8).toUpperCase() || 'N/A'}</p>
+            </div>
+          </div>
+        </div>
+        <div class="id-card-actions">
+          <button id="btn-print-id">🖨 Print ID Card</button>
+        </div>`;
+
+      // Generate QR code
+      const qrEl = container.querySelector('#id-qr-code');
+      if (qrEl && typeof QRCode !== 'undefined') {
+        new QRCode(qrEl, {
+          text: student._id,
+          width: 60,
+          height: 60,
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      }
+
+      container.querySelector('#btn-print-id').addEventListener('click', () => {
+        const printContent = container.querySelector('.id-card-wrapper').outerHTML;
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Student ID Card - ${name}</title>
+            <link rel="stylesheet" href="/css/style.css" />
+            <style>
+              body { margin: 0; padding: 20px; display: flex; justify-content: center; }
+              .id-card-wrapper { display: flex; gap: 30px; }
+              @media print {
+                body { padding: 0; }
+              }
+            </style>
+          </head>
+          <body>${printContent}</body>
+          </html>
+        `);
+        printWindow.document.close();
+        setTimeout(() => { printWindow.print(); }, 500);
+      });
+    }
+
+    container.querySelector('#btn-generate-id').addEventListener('click', () => {
+      const studentId = container.querySelector('#student-select').value;
+      if (!studentId) {
+        alert('Pehle student select karo!');
+        return;
+      }
+      const student = students.find(s => s._id === studentId);
+      if (student) showIdCard(student);
+    });
+  }
+};
+
 // ── Classes Management ─────────────────────────────────────────────
 Pages.classes = createCrudPage({
   title: '🏫 Class Management',
@@ -936,7 +1083,7 @@ Object.entries(simplePages).forEach(([name, cfg]) => {
 const PAGE_TITLES = {
   dashboard: 'Dashboard', students: 'Students', teachers: 'Teachers',
   classes: 'Classes', attendance: 'Attendance', fees: 'Fees',
-  exams: 'Exams', results: 'Results', admitcard: 'Admit Card',
+  exams: 'Exams', results: 'Results', admitcard: 'Admit Card', idcard: 'ID Card',
   library: 'Library', transport: 'Transport', notices: 'Notices'
 };
 

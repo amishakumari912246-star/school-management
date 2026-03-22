@@ -490,3 +490,243 @@ tr:hover td { background: #fafbfc; }
   .print-overlay { position: absolute; background: #fff; padding: 0; }
   .admit-card-doc { border: 2px solid #000; max-height: none; }
 }
+
+/* ── Student ID Card ───────────────────────────────────────────────── */
+.id-card-wrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.id-card-front,
+.id-card-back {
+  width: 340px;
+  height: 520px;
+  border: 2px solid #1a2e4a;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Front Side */
+.id-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: linear-gradient(135deg, #1a2e4a 0%, #2563a8 100%);
+  color: #fff;
+}
+
+.id-logo {
+  font-size: 2rem;
+}
+
+.id-school-name {
+  text-align: center;
+}
+
+.id-school-name h1 {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.id-school-name p {
+  font-size: 0.7rem;
+  margin: 3px 0 0;
+  color: #c7d2fe;
+}
+
+.id-title {
+  background: #f59e0b;
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px;
+  letter-spacing: 2px;
+}
+
+.id-body {
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.id-photo {
+  width: 100px;
+  height: 120px;
+  border: 2px solid #1a2e4a;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  flex-shrink: 0;
+}
+
+.id-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.id-photo span {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.id-details {
+  flex: 1;
+}
+
+.id-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.id-details td {
+  padding: 4px 5px;
+  font-size: 0.75rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.id-details td:first-child {
+  font-weight: 600;
+  color: #555;
+  width: 45%;
+}
+
+.id-details td:last-child {
+  color: #222;
+}
+
+.id-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 15px 15px;
+  margin-top: auto;
+  border-top: 1px dashed #ddd;
+}
+
+.id-validity {
+  font-size: 0.7rem;
+  color: #666;
+  background: #e8f5e9;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.id-signature {
+  text-align: center;
+}
+
+.id-signature .sig-line {
+  width: 80px;
+  height: 1px;
+  background: #333;
+  margin-bottom: 3px;
+}
+
+.id-signature p {
+  font-size: 0.65rem;
+  margin: 0;
+  color: #666;
+}
+
+/* Back Side */
+.id-back-header {
+  background: linear-gradient(135deg, #1a2e4a 0%, #2563a8 100%);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.id-back-header h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.id-back-header p {
+  font-size: 0.75rem;
+  margin: 5px 0 0;
+  color: #c7d2fe;
+}
+
+.id-back-content {
+  padding: 15px;
+}
+
+.id-back-content h4 {
+  font-size: 0.8rem;
+  margin: 10px 0 5px;
+  color: #1a2e4a;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 3px;
+}
+
+.id-back-content h4:first-child {
+  margin-top: 0;
+}
+
+.id-back-content p {
+  font-size: 0.72rem;
+  margin: 0;
+  color: #444;
+  line-height: 1.5;
+}
+
+.id-back-content ul {
+  margin: 5px 0 0;
+  padding-left: 15px;
+  font-size: 0.68rem;
+  color: #555;
+}
+
+.id-back-content li {
+  margin: 3px 0;
+}
+
+.id-back-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 15px 15px;
+  border-top: 1px dashed #ddd;
+  margin-top: auto;
+}
+
+.id-qr {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 5px;
+}
+
+.id-number {
+  font-size: 0.7rem;
+  color: #888;
+  margin: 0;
+  font-family: monospace;
+}
+
+.id-card-actions {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.id-card-actions button {
+  padding: 10px 25px;
+  font-size: 0.95rem;
+}
