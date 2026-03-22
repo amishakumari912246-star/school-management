@@ -161,7 +161,7 @@ def register_crud(collection):
         return (jsonify({'message': 'Deleted'}), 200) if ok else (jsonify({'message': 'Not found'}), 404)
 
 
-for col in ['students', 'teachers', 'attendance', 'fees', 'exams', 'admitcards', 'classes']:
+for col in ['students', 'teachers', 'attendance', 'fees', 'exams', 'admitcards', 'classes', 'library']:
     register_crud(col)
 
 

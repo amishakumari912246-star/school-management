@@ -1057,9 +1057,35 @@ Pages.classes = createCrudPage({
   ]
 });
 
+// ── Library Management ─────────────────────────────────────────────
+Pages.library = createCrudPage({
+  title: '📚 Library Management',
+  apiPath: '/library',
+  fields: [
+    { name: 'bookName',     label: 'Book Name' },
+    { name: 'author',       label: 'Author' },
+    { name: 'isbn',         label: 'ISBN Number' },
+    { name: 'category',     label: 'Category', type: 'select', options: ['Textbook', 'Reference', 'Fiction', 'Non-Fiction', 'Magazine', 'Journal', 'Encyclopedia', 'Other'] },
+    { name: 'publisher',    label: 'Publisher' },
+    { name: 'quantity',     label: 'Total Quantity', type: 'number' },
+    { name: 'available',    label: 'Available Copies', type: 'number' },
+    { name: 'price',        label: 'Price (₹)', type: 'number' },
+    { name: 'shelf',        label: 'Shelf/Rack No.' },
+    { name: 'addedDate',    label: 'Added Date', type: 'date' },
+  ],
+  columns: [
+    { key: 'bookName',   label: 'Book Name' },
+    { key: 'author',     label: 'Author' },
+    { key: 'isbn',       label: 'ISBN' },
+    { key: 'category',   label: 'Category' },
+    { key: 'quantity',   label: 'Total' },
+    { key: 'available',  label: 'Available' },
+    { key: 'shelf',      label: 'Shelf' },
+  ]
+});
+
 // ── Simple placeholder pages ──────────────────────────────────────
 const simplePages = {
-  library:   { icon: '📚', title: 'Library',   desc: 'Manage books and library records.' },
   transport: { icon: '🚌', title: 'Transport',  desc: 'Manage school bus routes and students.' },
   notices:   { icon: '📢', title: 'Notices',    desc: 'Manage school announcements and notices.' },
 };
