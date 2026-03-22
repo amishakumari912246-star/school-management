@@ -220,7 +220,48 @@ def seed_admin():
         print('Default admin created: admin@school.com / Admin@123')
 
 
-    seed_admin()
+def seed_classes():
+    classes = db.read('classes')
+    if len(classes) == 0:
+        default_classes = [
+            {'className': 'Nursery', 'section': 'A', 'classTeacher': '', 'roomNumber': '101', 'capacity': '30', 'subjects': 'English, Hindi, Drawing, Rhymes'},
+            {'className': 'Nursery', 'section': 'B', 'classTeacher': '', 'roomNumber': '102', 'capacity': '30', 'subjects': 'English, Hindi, Drawing, Rhymes'},
+            {'className': 'LKG', 'section': 'A', 'classTeacher': '', 'roomNumber': '103', 'capacity': '30', 'subjects': 'English, Hindi, Maths, Drawing, Rhymes'},
+            {'className': 'LKG', 'section': 'B', 'classTeacher': '', 'roomNumber': '104', 'capacity': '30', 'subjects': 'English, Hindi, Maths, Drawing, Rhymes'},
+            {'className': 'UKG', 'section': 'A', 'classTeacher': '', 'roomNumber': '105', 'capacity': '30', 'subjects': 'English, Hindi, Maths, Drawing, EVS'},
+            {'className': 'UKG', 'section': 'B', 'classTeacher': '', 'roomNumber': '106', 'capacity': '30', 'subjects': 'English, Hindi, Maths, Drawing, EVS'},
+            {'className': '1', 'section': 'A', 'classTeacher': '', 'roomNumber': '201', 'capacity': '40', 'subjects': 'English, Hindi, Maths, EVS, Drawing'},
+            {'className': '1', 'section': 'B', 'classTeacher': '', 'roomNumber': '202', 'capacity': '40', 'subjects': 'English, Hindi, Maths, EVS, Drawing'},
+            {'className': '2', 'section': 'A', 'classTeacher': '', 'roomNumber': '203', 'capacity': '40', 'subjects': 'English, Hindi, Maths, EVS, Drawing'},
+            {'className': '2', 'section': 'B', 'classTeacher': '', 'roomNumber': '204', 'capacity': '40', 'subjects': 'English, Hindi, Maths, EVS, Drawing'},
+            {'className': '3', 'section': 'A', 'classTeacher': '', 'roomNumber': '205', 'capacity': '40', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '3', 'section': 'B', 'classTeacher': '', 'roomNumber': '206', 'capacity': '40', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '4', 'section': 'A', 'classTeacher': '', 'roomNumber': '207', 'capacity': '40', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '4', 'section': 'B', 'classTeacher': '', 'roomNumber': '208', 'capacity': '40', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '5', 'section': 'A', 'classTeacher': '', 'roomNumber': '209', 'capacity': '40', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '5', 'section': 'B', 'classTeacher': '', 'roomNumber': '210', 'capacity': '40', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '6', 'section': 'A', 'classTeacher': '', 'roomNumber': '301', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST, Sanskrit'},
+            {'className': '6', 'section': 'B', 'classTeacher': '', 'roomNumber': '302', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST, Sanskrit'},
+            {'className': '7', 'section': 'A', 'classTeacher': '', 'roomNumber': '303', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST, Sanskrit'},
+            {'className': '7', 'section': 'B', 'classTeacher': '', 'roomNumber': '304', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST, Sanskrit'},
+            {'className': '8', 'section': 'A', 'classTeacher': '', 'roomNumber': '305', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST, Sanskrit'},
+            {'className': '8', 'section': 'B', 'classTeacher': '', 'roomNumber': '306', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST, Sanskrit'},
+            {'className': '9', 'section': 'A', 'classTeacher': '', 'roomNumber': '401', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '9', 'section': 'B', 'classTeacher': '', 'roomNumber': '402', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '10', 'section': 'A', 'classTeacher': '', 'roomNumber': '403', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '10', 'section': 'B', 'classTeacher': '', 'roomNumber': '404', 'capacity': '45', 'subjects': 'English, Hindi, Maths, Science, SST'},
+            {'className': '11 (Science)', 'section': 'A', 'classTeacher': '', 'roomNumber': '501', 'capacity': '40', 'subjects': 'English, Physics, Chemistry, Maths, Biology/CS'},
+            {'className': '11 (Commerce)', 'section': 'A', 'classTeacher': '', 'roomNumber': '502', 'capacity': '40', 'subjects': 'English, Accountancy, Business Studies, Economics, Maths'},
+            {'className': '12 (Science)', 'section': 'A', 'classTeacher': '', 'roomNumber': '503', 'capacity': '40', 'subjects': 'English, Physics, Chemistry, Maths, Biology/CS'},
+            {'className': '12 (Commerce)', 'section': 'A', 'classTeacher': '', 'roomNumber': '504', 'capacity': '40', 'subjects': 'English, Accountancy, Business Studies, Economics, Maths'},
+        ]
+        for cls in default_classes:
+            db.create('classes', cls)
+        print(f'Default classes created: Nursery to 12th ({len(default_classes)} classes)')
+
+
+seed_admin()
+seed_classes()
 
 
 if __name__ == '__main__':
