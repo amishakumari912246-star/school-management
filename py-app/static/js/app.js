@@ -784,29 +784,59 @@ Pages.admitcard = {
       overlay.className = 'print-overlay';
       overlay.innerHTML = `
         <div class="admit-card-doc">
-          <div class="ac-header">
-            <h2>Admit Card</h2>
-            <p>${item.examName || ''}</p>
+          <div class="ac-school-header">
+            <div class="ac-school-logo">🏫</div>
+            <div class="ac-school-info">
+              <h1>Delhi Public School</h1>
+              <p class="ac-school-address">Vasant Kunj, Delhi - 110070</p>
+              <p class="ac-school-contact">Phone: 011-26123456 | Email: info@dpsvasantkunj.com</p>
+            </div>
+            <div class="ac-school-logo">🏫</div>
+          </div>
+          <div class="ac-title">
+            <h2>ADMIT CARD</h2>
+            <p>${item.examName || 'Examination'}</p>
           </div>
           <div class="ac-body">
             <div class="ac-info">
               <table>
-                <tr><td>Student Name:</td><td><strong>${item.studentName || ''}</strong></td></tr>
-                <tr><td>Father's Name:</td><td>${item.fatherName  || ''}</td></tr>
-                <tr><td>Roll Number:</td> <td><strong>${item.rollNumber  || ''}</strong></td></tr>
-                <tr><td>Class:</td>       <td>${item.className   || ''} – ${item.section || ''}</td></tr>
-                <tr><td>Exam Date:</td>   <td>${item.examDate    || ''}</td></tr>
-                <tr><td>Exam Center:</td> <td>${item.examCenter  || ''}</td></tr>
-                <tr><td>Subjects:</td>    <td>${item.subjects    || ''}</td></tr>
+                <tr><td>Student Name</td><td><strong>${item.studentName || ''}</strong></td></tr>
+                <tr><td>Father's Name</td><td>${item.fatherName  || ''}</td></tr>
+                <tr><td>Roll Number</td><td><strong>${item.rollNumber  || ''}</strong></td></tr>
+                <tr><td>Class & Section</td><td>${item.className   || ''} – ${item.section || ''}</td></tr>
+                <tr><td>Exam Date</td><td>${item.examDate    || ''}</td></tr>
+                <tr><td>Exam Center</td><td>${item.examCenter  || ''}</td></tr>
+                <tr><td>Subjects</td><td>${item.subjects    || ''}</td></tr>
               </table>
             </div>
-            <div class="ac-photo">
-              ${item.photo ? `<img src="${item.photo}" alt="Photo" />` : 'Photo'}
+            <div class="ac-photo-box">
+              <div class="ac-photo">
+                ${item.photo ? `<img src="${item.photo}" alt="Photo" />` : '<span>Paste<br>Photo<br>Here</span>'}
+              </div>
             </div>
           </div>
+          <div class="ac-instructions">
+            <h4>Important Instructions:</h4>
+            <ul>
+              <li>Students must bring this admit card to the examination hall.</li>
+              <li>Electronic devices are strictly prohibited.</li>
+              <li>Report 30 minutes before the exam time.</li>
+              <li>No student will be allowed without valid ID proof.</li>
+            </ul>
+          </div>
           <div class="ac-footer">
-            <div class="sig"><p>____________________</p><p>Principal Signature</p></div>
-            <div class="sig"><p>____________________</p><p>Student Signature</p></div>
+            <div class="sig">
+              <div class="sig-line"></div>
+              <p>Class Teacher</p>
+            </div>
+            <div class="sig">
+              <div class="sig-line"></div>
+              <p>Exam Controller</p>
+            </div>
+            <div class="sig">
+              <div class="sig-line"></div>
+              <p>Principal</p>
+            </div>
           </div>
           <div class="no-print-actions">
             <button id="do-print">🖨 Print</button>
