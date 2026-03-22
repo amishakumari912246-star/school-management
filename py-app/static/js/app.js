@@ -1084,9 +1084,37 @@ Pages.library = createCrudPage({
   ]
 });
 
+// ── Transport Management ─────────────────────────────────────────────
+Pages.transport = createCrudPage({
+  title: '🚌 Transport Management',
+  apiPath: '/transport',
+  fields: [
+    { name: 'busNumber',     label: 'Bus Number (e.g. DL-01-AB-1234)' },
+    { name: 'routeNumber',   label: 'Route Number' },
+    { name: 'routeName',     label: 'Route Name (e.g. Vasant Kunj - Dwarka)' },
+    { name: 'driverName',    label: 'Driver Name' },
+    { name: 'driverMobile',  label: 'Driver Mobile' },
+    { name: 'conductorName', label: 'Conductor Name' },
+    { name: 'conductorMobile', label: 'Conductor Mobile' },
+    { name: 'capacity',      label: 'Seating Capacity', type: 'number' },
+    { name: 'stops',         label: 'Stops (comma separated)', spanFull: true },
+    { name: 'departureTime', label: 'Departure Time', type: 'time' },
+    { name: 'arrivalTime',   label: 'Arrival Time', type: 'time' },
+    { name: 'monthlyFee',    label: 'Monthly Fee (₹)', type: 'number' },
+  ],
+  columns: [
+    { key: 'busNumber',    label: 'Bus No.' },
+    { key: 'routeNumber',  label: 'Route' },
+    { key: 'routeName',    label: 'Route Name' },
+    { key: 'driverName',   label: 'Driver' },
+    { key: 'driverMobile', label: 'Driver Mobile' },
+    { key: 'capacity',     label: 'Capacity' },
+    { key: 'monthlyFee',   label: 'Fee (₹)' },
+  ]
+});
+
 // ── Simple placeholder pages ──────────────────────────────────────
 const simplePages = {
-  transport: { icon: '🚌', title: 'Transport',  desc: 'Manage school bus routes and students.' },
   notices:   { icon: '📢', title: 'Notices',    desc: 'Manage school announcements and notices.' },
 };
 
