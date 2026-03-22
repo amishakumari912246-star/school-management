@@ -888,9 +888,30 @@ Pages.admitcard = {
   }
 };
 
+// ── Classes Management ─────────────────────────────────────────────
+Pages.classes = createCrudPage({
+  title: '🏫 Class Management',
+  apiPath: '/classes',
+  fields: [
+    { name: 'className',     label: 'Class Name (e.g. 1, 2, 10, 12)' },
+    { name: 'section',       label: 'Section (e.g. A, B, C)' },
+    { name: 'classTeacher',  label: 'Class Teacher Name' },
+    { name: 'roomNumber',    label: 'Room Number' },
+    { name: 'capacity',      label: 'Capacity (Max Students)', type: 'number' },
+    { name: 'subjects',      label: 'Subjects (comma separated)', spanFull: true },
+  ],
+  columns: [
+    { key: 'className',     label: 'Class' },
+    { key: 'section',       label: 'Section' },
+    { key: 'classTeacher',  label: 'Class Teacher' },
+    { key: 'roomNumber',    label: 'Room No.' },
+    { key: 'capacity',      label: 'Capacity' },
+    { key: 'subjects',      label: 'Subjects' },
+  ]
+});
+
 // ── Simple placeholder pages ──────────────────────────────────────
 const simplePages = {
-  classes:   { icon: '🏫', title: 'Classes',   desc: 'Manage school classes and sections.' },
   library:   { icon: '📚', title: 'Library',   desc: 'Manage books and library records.' },
   transport: { icon: '🚌', title: 'Transport',  desc: 'Manage school bus routes and students.' },
   notices:   { icon: '📢', title: 'Notices',    desc: 'Manage school announcements and notices.' },

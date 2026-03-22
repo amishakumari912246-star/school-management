@@ -120,7 +120,7 @@ def dashboard_summary():
     return jsonify({
         'totalStudents': len(db.read('students')),
         'totalTeachers': len(db.read('teachers')),
-        'totalClasses': 12,
+        'totalClasses': len(db.read('classes')),
         'attendancePercent': 92,
         'pendingFees': sum(float(f.get('pendingAmount') or 0) for f in fees)
     })
@@ -161,7 +161,7 @@ def register_crud(collection):
         return (jsonify({'message': 'Deleted'}), 200) if ok else (jsonify({'message': 'Not found'}), 404)
 
 
-for col in ['students', 'teachers', 'attendance', 'fees', 'exams', 'admitcards']:
+for col in ['students', 'teachers', 'attendance', 'fees', 'exams', 'admitcards', 'classes']:
     register_crud(col)
 
 
